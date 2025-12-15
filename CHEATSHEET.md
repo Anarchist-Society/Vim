@@ -29,4 +29,16 @@
 | `B`   | Saltar hacia atrás hasta el inicio de una palabra (incluso con puntuación) |
 | `ge`  | Saltar hacia atrás hasta el final de una palabra                           |
 | `gE`  | Saltar hacia atrás hasta el final de una palabra (incluso con puntuación)  |
-| `gE`  | Saltar hacia atrás hasta el final de una palabra (incluso con puntuación)  |
+| `%`   | Ir al carácter asociado (pares por defecto '()','{}', '[]')                |
+| `0`   | Mover el cursor al inicio de la línea                                      |
+| `^`   | Mover el cursor al primer carácter no espaciado de la línea                |
+| `$`   | Mover el cursor al final de la línea                                       |
+| `g_`  | Mover el cursor al último carý no-espacio de la línea                      |
+| `gg`  | Mover el cursor a la primera línea del documento                           |
+| `G`   | Mover el cursor a la última línea del documento                            |
+| `5gg` | Mover el cursor a la línea 5 |
+| `5G`  | Mover el cursor a la línea 5 |
+| `gd`  | Mover el cursor a la declaración local |
+| `gD`  | Mover el cursor a la declaración global|
+| `fx`  | Mover el cursor a la siguiente ocurrencia del carácter x |
+| `tx`  | Mover el cursor a la siguiente ocurrencia del carácter x |
