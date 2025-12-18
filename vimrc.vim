@@ -9,36 +9,60 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ========================================================================== 
-" 1. GENERAL SETTINGS
+" 1. CONFIGURACIÓN GENERAL
 " ==========================================================================
+
+" Detectar tipo de fichero y habilitar plugins 
 filetype on
 filetype plugin on
 filetype indent on
-syntax on
-set autoread
-set number relativenumber
-set scrolloff=10
-set linebreak
-set termguicolors
-set background=dark
 
-" Tabulation
-set shiftwidth=4
-set tabstop=4
-set expandtab
+" Interfaz
+syntax on " Activar resalto de sintaxis
+set number " Mostrar número de líneas absoluto
+set relativenumber " Mostrar número de líneas relativo
+set scrolloff=10  " Mantener 10 líneas de margen vertical al desplazarse 
+set linebreak " Evita cortar palabras al hacer wrap
+set termguicolors " Mejor soporte de colores
+set background=dark " Mejora soporte de colores en fondos oscuros
 
-" SEARCH
-set incsearch hlsearch ignorecase smartcase showmatch
+" =========================
+" Tabs y espacios
+" =========================
+set shiftwidth=4 " Indent automático de 4 espacios
+set tabstop=4 " Tab representa 4 espacios
+set expandtab " Convertir tabs a espacios
 
-" Backup & undo
-set nowritebackup noswapfile history=1000
+" =========================
+" Búsqueda
+" =========================
+set incsearch " Búsqueda incremental
+set hlsearch " Resaltar coincidencias
+set ignorecase " Ignorar mayúsculas
+set smartcase " Sensible a mayúsculas si se usan
+set showmatch " Resaltar paréntesis coincidentes
+
+" =========================
+" Backup y undo
+" =========================
+set nowritebackup " No crear backup al guardar
+set noswapfile " No crear swap
+set history=10 " Historial de comandos
+
 if version >= 703
-    set undodir=~/.vim/backup
-    set undofile
-    set undoreload=10000
+    set undodir=~/.vim/backup " Directorio para fichero de undo
+    set undofile " Guardar undo persistentemente
+    set undoreload=10000 " Máx. deshacer/rehacer
 endif
 
-" Wildmenu
+" =========================
+" Autoreload externo
+" =========================
+set autoread " Aplicar cambios si se edita de forma externa
+
+" =========================
+" Wildmenu (autocompletado)
+" =========================
 set wildmode=list:longest,full
 set wildignore=*.o
 
@@ -46,51 +70,59 @@ set wildignore=*.o
 " 2. PLUGINS (vim-plug)
 " ==========================================================================
 call plug#begin('~/.vim/plugged')
-" Tools
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
-Plug 'mhinz/vim-startify'
-Plug 'airblade/vim-gitgutter'
-" Plug 'PhilRunninger/nerdtree-buffer-ops' (testing)
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Productivity
-Plug 'https://github.com/wolandark/vim-live-server.git', { 'do': 'sudo npm install -g live-server' }
+" Herramientas
+Plug 'dense-analysis/ale' " Linter en tiempo real
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletado + LSP
+Plug 'preservim/nerdtree' " Explorador de ficheros
+Plug 'mhinz/vim-startify' " Pantalla de inicio
+Plug 'airblade/vim-gitgutter' " Muestra iconos de git en ficheros
+Plug 'Xuyuanp/nerdtree-git-plugin' " Muestra iconos de git en NERDTree
+Plug 'https://github.com/wolandark/vim-live-server.git', { 'do': 'sudo npm install -g live-server' } " Habilitar Live-Server
+Plug 'puremourning/vimspector'
 
-" Apareance
-Plug 'gerardbm/vim-atomic'
-Plug 'gerardbm/vim-cosmic'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+" Apariencia
+Plug 'gerardbm/vim-atomic' " Colorscheme
+Plug 'gerardbm/vim-cosmic' " Colorscheme
+Plug 'ghifarit53/tokyonight-vim' " Colorscheme
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Habilita colores en NERDTree e iconos de vim-devicons
+Plug 'ryanoasis/vim-devicons' " Añade iconos para Vim
 call plug#end()
 
 " ==========================================================================
-" 3. PLUGIN CONFIGURATION
+" 3. CONFIGURACIÓN DE PLUGINS
 " ==========================================================================
-" vim-atomic
 
-" vim-cosmic
-colorscheme cosmic
-CosmicLunarC5
+" ===============================
+" Tema
+" ===============================
+" colorscheme tokyonight" Activar theme
+colorscheme atomic
+AtomicOceanLC
 
+" ===============================
 " NERDTree
-" Open NERDTree in right
-let g:NERDTreeWinPos = 'right'
+" ===============================
+let g:NERDTreeWinPos = 'right' " Abrir NERDTree a la derecha
 
-" Exit Vim if NERDTree is the only window remaining in the only tab
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+" Auto-cerrar Vim si NERDTree es la única ventana que queda en la única pestaña
+autocmd BufEnter *
+            \ if tabpagenr('$') == 1 && winnr('$') == 1
+            \    && exists('b:NERDTree') && b:NERDTree.isTabTree()
+            \ |  call feedkeys(":quit\<CR>:\<BS>")
+            \ | endif
 
-" Close the tab if NERDTree is the only window remaining in it
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+" Auto-cerrar Vim si NERDTree es la única ventana
+autocmd BufEnter *
+            \ if winnr('$') == 1 && exists('b:NERDTree')
+            \ && b:NERDTree.isTabTree()
+            \ | call feedkeys(":quit\<CR>:\<BS>")
+            \ | endif
 
-" Show lines of files
-" let g:NERDTreeFileLines = 1 (this break vim-nerdtree-syntax-highlight)
-
-" Disable Cursorline in NERDTree
-let g:NERDTreeHighlightCursorline = 0
-
+" ===============================
 " vim-startify
+" ===============================
+" Abrir Startify + NERDTree
 let g:startify_change_to_dir = 0
 autocmd VimEnter *
             \   if !argc()
@@ -99,9 +131,12 @@ autocmd VimEnter *
             \ |   wincmd w
             \ | endif
 
+" Bookmarks
 let g:startify_bookmarks = [{'c': '~/.vimrc'}]
 
+" ===============================
 " vim-nerdtree-syntax-highlight
+" ===============================
 " Disable default colors for folder and file icons
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
@@ -119,6 +154,9 @@ let mapleader = ","
 nnoremap <LEADER>w :w<ENTER>
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 nnoremap <LEADER>f :NERDTreeFind<CR>
+nmap <silent> <leader>ca <Plug>(coc-codeaction-line)
+nnoremap <LEADER>t :terminal<CR>
+nnoremap <LEADER>tr :terminal ./mvnw spring-boot:run<CR>
 
 " Insert mode
 inoremap jj <ESC>
