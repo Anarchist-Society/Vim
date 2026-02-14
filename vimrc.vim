@@ -19,8 +19,8 @@ filetype indent on
 
 " Interfaz
 syntax on " Activar resalto de sintaxis
-set number " Mostrar número de líneas absoluto
-set relativenumber " Mostrar número de líneas relativo
+" set number " Mostrar número de líneas absoluto
+" set relativenumber " Mostrar número de líneas relativo
 set scrolloff=10  " Mantener 10 líneas de margen vertical al desplazarse 
 set linebreak " Evita cortar palabras al hacer wrap
 set termguicolors " Mejor soporte de colores
