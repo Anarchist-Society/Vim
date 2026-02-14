@@ -122,6 +122,8 @@ autocmd BufEnter *
             \ | call feedkeys(":quit\<CR>:\<BS>")
             \ | endif
 
+let NERDTreeRespectWildIgnore=1
+
 " ===============================
 " vim-startify
 " ===============================
@@ -185,6 +187,13 @@ nnoremap <C-RIGHT> <C-w><
 " 5. VIMSCRIPT
 " ============================================================================
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
+
+" Solución para indentar html + css
+let g:html_indent_style1 = "inc"
+let g:html_indent_script1 = "inc"
+" set autoindent
+" set smartindent
 
 " ============================================================================
 " 6. STATUS LINE
