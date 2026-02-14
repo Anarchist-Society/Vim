@@ -50,9 +50,9 @@ set noswapfile " No crear swap
 set history=10 " Historial de comandos
 
 if version >= 703
-    set undodir=~/.vim/backup " Directorio para fichero de undo
-    set undofile " Guardar undo persistentemente
-    set undoreload=10000 " Máx. deshacer/rehacer
+	set undodir=~/.vim/backup " Directorio para fichero de undo
+	set undofile " Guardar undo persistentemente
+	set undoreload=10000 " Máx. deshacer/rehacer
 endif
 
 " =========================
@@ -64,7 +64,7 @@ set autoread " Aplicar cambios si se edita de forma externa
 " Wildmenu (autocompletado)
 " =========================
 set wildmode=list:longest,full
-set wildignore=*.o
+set wildignore=*.out,*.class,*.pdf
 
 " ==========================================================================
 " 2. PLUGINS (vim-plug)
