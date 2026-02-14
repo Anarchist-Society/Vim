@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.0.3] - 2026-02-14
+### Changed
+- Remove line numbers (commented `set number` and `set relativenumber` for cleaner, more minimalistic interface)
+- Update persistent undo
+- Expanded `wildignore` to include `*.out`, `*.class`, `*.pdf`
+### Added
+- `AndrewRadev/tagalong.vim`: Sync opening and closing HTML/XML tags on rename (great for HTML/CSS editing)
+- `wolandark/vim-live-server` (unused live reload plugin)
+- `mattn/emmet-vim` (Emmet abbreviation expansion under testing/minimal config)
+
 ## [2.0.2] - 2025-12-03
 ### Added
 - Enable hybrid line numbers ('number' + 'relativenumber')
