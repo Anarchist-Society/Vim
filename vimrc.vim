@@ -79,8 +79,8 @@ Plug 'mhinz/vim-startify' " Pantalla de inicio
 Plug 'airblade/vim-gitgutter' " Muestra iconos de git en ficheros
 Plug 'Xuyuanp/nerdtree-git-plugin' " Muestra iconos de git en NERDTree
 Plug 'https://github.com/wolandark/vim-live-server.git' " Habilitar Live-Server
-" Plug 'mattn/emmet-vim' " Expansión de abreviaciones HTML/CSS (Emmet)
-" Plug 'AndrewRadev/tagalong.vim'
+Plug 'mattn/emmet-vim' " Expansión de abreviaciones HTML/CSS (Emmet)
+Plug 'AndrewRadev/tagalong.vim'
 
 " Apariencia
 Plug 'gerardbm/vim-atomic' " Colorscheme
