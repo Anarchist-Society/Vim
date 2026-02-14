@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.4] - 2026-02-14
+### Changed
+- Switched default colorscheme to `atomic` for improved minimalism and better color consistency
+### Added
+- `let g:NERDTreeRespectWildIgnore = 1`: Makes NERDTree honor Vim's `wildignore` settings to hide build/output files consistently
+
 ## [2.0.3] - 2026-02-14
 ### Changed
 - Remove line numbers (commented `set number` and `set relativenumber` for cleaner, more minimalistic interface)

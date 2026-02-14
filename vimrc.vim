@@ -98,8 +98,10 @@ call plug#end()
 " Tema
 " ===============================
 " colorscheme tokyonight" Activar theme
+" colorscheme cosmic
 colorscheme atomic
-AtomicOceanLC
+" CosmicLunarC5
+" AtomicOceanLC
 
 " ===============================
 " NERDTree
