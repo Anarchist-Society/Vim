@@ -97,11 +97,7 @@ call plug#end()
 " ===============================
 " Tema
 " ===============================
-" colorscheme tokyonight" Activar theme
-" colorscheme cosmic
 colorscheme atomic
-" CosmicLunarC5
-" AtomicOceanLC
 
 " ===============================
 " NERDTree
@@ -161,7 +157,7 @@ nnoremap <LEADER>n :NERDTreeToggle<CR>
 nnoremap <LEADER>f :NERDTreeFind<CR>
 nmap <silent> <leader>ca <Plug>(coc-codeaction-line)
 nnoremap <LEADER>t :terminal<CR>
-nnoremap <LEADER>tr :terminal ./mvnw spring-boot:run<CR>
+" nnoremap <LEADER>tr :terminal ./mvnw spring-boot:run<CR>
 
 " Insert mode
 inoremap jj <ESC>
@@ -191,9 +187,6 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
 
 " Solución para indentar html + css
 let g:html_indent_style1 = "inc"
-let g:html_indent_script1 = "inc"
-" set autoindent
-" set smartindent
 
 " ============================================================================
 " 6. STATUS LINE
