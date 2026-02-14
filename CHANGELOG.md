@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [2.0.5] - 2026-02-14
+### Added
+- Filetype-specific indentation for JSON: `shiftwidth=2`, `tabstop=2`, `expandtab`
+- Improved HTML indentation: `let g:html_indent_style1 = "inc"` to add one extra indent level for CSS inside `<style>` tags
+
 ## [2.0.4] - 2026-02-14
 ### Changed
 - Switched default colorscheme to `atomic` for improved minimalism and better color consistency
