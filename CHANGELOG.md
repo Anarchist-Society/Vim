@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.0.6] - 2026-02-15
+### Changed
+- Improved internal documentation in vimrc.vim: added clear Spanish comments explaining
+  - `NERDTreeRespectWildIgnore` behavior
+  - WebDevIcons default icon color disabling for folders and files
+  - Full filename highlighting in NERDTree (by extension, exact match and patterns)
+
 ## [2.0.5] - 2026-02-14
 ### Added
 - Filetype-specific indentation for JSON: `shiftwidth=2`, `tabstop=2`, `expandtab`
