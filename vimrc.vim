@@ -1,18 +1,18 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               
+"
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"               ██║   ██║██║██╔████╔██║██████╔╝██║     
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
 "               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
 "                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ========================================================================== 
+" ==========================================================================
 " 1. CONFIGURACIÓN GENERAL
 " ==========================================================================
 
-" Detectar tipo de fichero y habilitar plugins 
+" Detectar tipo de fichero y habilitar plugins
 filetype on
 filetype plugin on
 filetype indent on
@@ -21,7 +21,7 @@ filetype indent on
 syntax on " Activar resalto de sintaxis
 " set number " Mostrar número de líneas absoluto
 " set relativenumber " Mostrar número de líneas relativo
-set scrolloff=10  " Mantener 10 líneas de margen vertical al desplazarse 
+set scrolloff=10  " Mantener 10 líneas de margen vertical al desplazarse
 set linebreak " Evita cortar palabras al hacer wrap
 set termguicolors " Mejor soporte de colores
 set background=dark " Mejora soporte de colores en fondos oscuros
@@ -118,7 +118,7 @@ autocmd BufEnter *
             \ | call feedkeys(":quit\<CR>:\<BS>")
             \ | endif
 
-let NERDTreeRespectWildIgnore=1
+let NERDTreeRespectWildIgnore=1 " Ocultar en NERDTree los archivos definidos en 'wildignore'
 
 " ===============================
 " vim-startify
@@ -138,13 +138,25 @@ let g:startify_bookmarks = [{'c': '~/.vimrc'}]
 " ===============================
 " vim-nerdtree-syntax-highlight
 " ===============================
-" Disable default colors for folder and file icons
+" Configuración de colores - NERDTree + WebDevIcons
+
+" Desactiva el color por defecto para el ícono de directorios o carpetas
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+
+" Desactiva el color por defecto para el ícono de ficheros o archivos
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
 
-" Colors applied in names of files
+" Aplicar colores al NOMBRE COMPLETO del fichero o archivo
+
+" Cuando coincida por extensión (.js, .py, .html, etc)
 let g:NERDTreeFileExtensionHighlightFullName = 1
+
+" Aplica el resaltado al nombre completo
+" Cuando hay una coincidencia exacta (Makefile, Dockerfile, etc)
 let g:NERDTreeExactMatchHighlightFullName = 1
+
+" Aplica el resaltado al nombre completo
+" Cuando coincide con un patrón definido (*.config.js, *.test.ts, etc)
 let g:NERDTreePatternMatchHighlightFullName = 1
 
 " ==========================================================================
