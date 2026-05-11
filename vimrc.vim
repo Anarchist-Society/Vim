@@ -78,16 +78,24 @@ Plug 'preservim/nerdtree' " Explorador de ficheros
 Plug 'mhinz/vim-startify' " Pantalla de inicio
 Plug 'airblade/vim-gitgutter' " Muestra iconos de git en ficheros
 Plug 'Xuyuanp/nerdtree-git-plugin' " Muestra iconos de git en NERDTree
+Plug 'Yggdroot/indentLine' " Indent lines
+
+" Web development
 Plug 'https://github.com/wolandark/vim-live-server.git' " Habilitar Live-Server
-Plug 'mattn/emmet-vim' " Expansión de abreviaciones HTML/CSS (Emmet)
-Plug 'AndrewRadev/tagalong.vim'
+" Plug 'mattn/emmet-vim' " Expansión de abreviaciones HTML/CSS (Emmet) -> Lo he comentado porque con coc-emmet ya cumple su función
+" Plug 'alvan/vim-closetag' " Cierra automáticamente etiquetas HTML/XML -> Lo he comentado porque coc-html ya cumple con su función, pero lo he dejado ahí por si no usas coc-html y quieres algo más simple y minimalista
+" Plug 'AndrewRadev/tagalong.vim' " Actualiza etiquetas de cierre al renombrar la apertura (Conflicto con emmet) arreglar
+" Plug 'ap/vim-css-color' " Solucionar error con hsl y hsla
 
 " Apariencia
 Plug 'gerardbm/vim-atomic' " Colorscheme
 Plug 'gerardbm/vim-cosmic' " Colorscheme
 Plug 'ghifarit53/tokyonight-vim' " Colorscheme
+" Plug 'altercation/vim-colors-solarized' " Colorscheme
+Plug 'lifepillar/vim-solarized8' " Colorscheme
+Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Habilita colores en NERDTree e iconos de vim-devicons
-Plug 'ryanoasis/vim-devicons' " Añade iconos para Vim
+Plug 'ryanoasis/vim-devicons' " Añade iconos para Vim (Obligatorio ir al final)
 call plug#end()
 
 " ==========================================================================
@@ -97,7 +105,7 @@ call plug#end()
 " ===============================
 " Tema
 " ===============================
-colorscheme atomic
+colorscheme solarized8
 
 " ===============================
 " NERDTree
@@ -118,13 +126,14 @@ autocmd BufEnter *
             \ | call feedkeys(":quit\<CR>:\<BS>")
             \ | endif
 
-let NERDTreeRespectWildIgnore=1 " Ocultar en NERDTree los archivos definidos en 'wildignore'
+let NERDTreeRespectWildIgnore=1 " Ocultar en NERDTree los ficheros definidos en 'wildignore'
 
 " ===============================
 " vim-startify
 " ===============================
 " Abrir Startify + NERDTree
 let g:startify_change_to_dir = 0
+
 autocmd VimEnter *
             \   if !argc()
             \ |   Startify
@@ -143,10 +152,10 @@ let g:startify_bookmarks = [{'c': '~/.vimrc'}]
 " Desactiva el color por defecto para el ícono de directorios o carpetas
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 
-" Desactiva el color por defecto para el ícono de ficheros o archivos
+" Desactiva el color por defecto para el ícono de ficheros o ficheros
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
 
-" Aplicar colores al NOMBRE COMPLETO del fichero o archivo
+" Aplicar colores al NOMBRE COMPLETO del fichero o fichero
 
 " Cuando coincida por extensión (.js, .py, .html, etc)
 let g:NERDTreeFileExtensionHighlightFullName = 1
@@ -159,12 +168,18 @@ let g:NERDTreeExactMatchHighlightFullName = 1
 " Cuando coincide con un patrón definido (*.config.js, *.test.ts, etc)
 let g:NERDTreePatternMatchHighlightFullName = 1
 
+" ===============================
+" ===============================
+
+let g:user_emmet_leader_key=','
+
 " ==========================================================================
 " 4. MAPPINGS
 " ==========================================================================
 " Leader key
 let mapleader = ","
 nnoremap <LEADER>w :w<ENTER>
+nnoremap <LEADER>q :q<ENTER>
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 nnoremap <LEADER>f :NERDTreeFind<CR>
 nmap <silent> <leader>ca <Plug>(coc-codeaction-line)
@@ -194,17 +209,40 @@ nnoremap <C-RIGHT> <C-w><
 " ============================================================================
 " 5. VIMSCRIPT
 " ============================================================================
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType html,css,javascript,json setlocal shiftwidth=2 tabstop=2 expandtab " Para tabular con 2 espacios ficheros html, css, javascript, json
+autocmd FileType sql setlocal shiftwidth=2 tabstop=2 expandtab
+" autocmd BufWritePre *.html,*.css,*.js,*,json :CocCommand prettier.forceFormatDocument
+autocmd BufWritePre *.html,*.css,*.js,*.json silent! :CocCommand prettier.formatFile
 
 " Solución para indentar html + css
 let g:html_indent_style1 = "inc"
 
+" Solución para indentar python
+" Desactiva smartindent para Python (a veces interfiere)
+autocmd FileType python setlocal nosmartindent
+
+" Configuración extra del indentador de Python (Vim 8.2+ / Neovim)
+let g:python_indent = {}
+let g:python_indent.disable_parentheses_indenting = 1
+let g:python_indent.closed_paren_align_last_line = 0
+
 " ============================================================================
 " 6. STATUS LINE
 " ============================================================================
-set statusline=
-set statusline+=\ %F\ %M\ %Y\ %R
-set statusline+=%=
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-set laststatus=2
+set statusline= " Reseteamos el statusline
+
+" / -> Espacio literal
+set statusline+=%f " %F -> Ruta completa del fichero, he cambiado %F -> %f para ver solo el nombre del fichero y no la ruta completa
+set statusline+=\ %M " %M -> Muestra + si el fichero está modificado
+set statusline+=\ %Y " %Y -> Tipo de fichero
+set statusline+=\ %R " %R -> Muestra RO si el fichero está en modo lectura
+
+set statusline+=%= " Divide el statusline en dos partes, todo lo que esté antes a la izquierda, lo que esté después a la derecha
+
+set statusline+=ascii:\ %b " %b -> Valor ASCII del carácter bajo el cursor
+set statusline+=\ hex:\ 0x%B " 0x%B -> Valor ASCII en hexadecimal
+set statusline+=\ row:\ %l " %l -> Número de línea actual
+set statusline+=\ col:\ %c " %c -> Número de columna actual
+set statusline+=\ percent:\ %p%% " %p -> Porcentaje dentro del fichero, %% -> imprime un % literal
+set laststatus=2 " Controla cuando se muestra el statusline, 0 nunca, 1 solo si hay una ventana, 2 siempre visible
+set statusline+=\ time:\ %{strftime('%H:%M')}
