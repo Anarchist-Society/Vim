@@ -65,31 +65,3 @@ node --version
 # Verificar la versión de npm
 npm --version
 ```
-
-## Extensiones de coc-nvim
-
-Después de instalar los plugins con vim-plug, abre Vim y ejecuta:
-
-```vim
-:CocInstall coc-json coc-html coc-css coc-tsserver coc-prettier coc-emmet
-```
-
-O desde la terminal:
-
-```bash
-# Instalar extensiones de coc-nvim globalmente (-g)
-npm install -g coc-json coc-html coc-css coc-tsserver coc-prettier coc-emmet
-```
-
-Las extensiones se guardan en `~/.config/coc/extensions/`.
-
-## Instalación
-
-1. Crear estructura de directorios
-2. Copiar `vimrc.vim` a `~/.vimrc`
-3. Instalar vim-plug
-4. Instalar Node.js y npm
-5. Abrir Vim y ejecutar `:PlugInstall`
-6. Instalar extensiones coc-nvim con `:CocInstall ...`
-
-La guía detallada está en **[INSTALL.md](INSTALL.md)**.
