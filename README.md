@@ -66,15 +66,6 @@ node --version
 npm --version
 ```
 
-> **Nota:** Si pacman instala Node.js 25+, usa `nvm` para instalar una versión LTS:
-> ```bash
-> # Descargar script de instalación de nvm
-> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-> # Reinicia la terminal o ejecuta: source ~/.zshrc
-> nvm install --lts  # Instalar última versión LTS
-> nvm use --lts      # Usar versión LTS instalada
-> ```
-
 ## Extensiones de coc-nvim
 
 Después de instalar los plugins con vim-plug, abre Vim y ejecuta:
