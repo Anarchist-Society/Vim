@@ -8,7 +8,7 @@ Esta primera versión está basada en la guía de configuración de vimrc de  **
 ## Requisitos previos
 - Vim >= 8.2 (recomendado)
 - curl instalado
-- Node.js >= 16 y <= 24 (versión 25+ da errores con coc-nvim)
+- Node.js
 - npm (incluido con Node.js)
 - Git
 
