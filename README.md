@@ -65,3 +65,9 @@ node --version
 # Verificar la versión de npm
 npm --version
 ```
+
+## Instalación
+
+```bash
+ln -s $(pwd)/vimrc.vim ~/.vimrc
+```
