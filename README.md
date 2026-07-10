@@ -28,8 +28,6 @@ Creamos la estructura:
 mkdir --parents ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 ```
 
-Creamos el fichero vimrc con un enlace simbólico (ver [Instalación](#instalación))
-
 ## Plugins para vim
 Para añadir plugin: yo voy a usar el gestor de plugins vim-plug [Instalar vim-plug (curl)](https://github.com/junegunn/vim-plug#installation), lo instalamos con el siguiente comando.
 
@@ -67,6 +65,8 @@ npm --version
 Vincula el fichero de configuración del repositorio con tu `~/`.
 
 ```bash
+# Eliminar ~/.vimrc si ya existe
+rm -r ~/.vimrc
 # Crear enlace simbólico de vimrc.vim a ~/.vimrc
 ln -s $(pwd)/vimrc.vim ~/.vimrc
 ```
