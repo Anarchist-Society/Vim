@@ -68,6 +68,9 @@ npm --version
 
 ## Instalación
 
+Vincula el fichero de configuración del repositorio con tu `~/`.
+
 ```bash
+# Crear enlace simbólico de vimrc.vim a ~/.vimrc
 ln -s $(pwd)/vimrc.vim ~/.vimrc
 ```
