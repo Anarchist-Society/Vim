@@ -105,7 +105,7 @@ call plug#end()
 " ===============================
 " Tema
 " ===============================
-colorscheme solarized8
+colorscheme tokyonight
 
 " ===============================
 " NERDTree
