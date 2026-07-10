@@ -67,6 +67,16 @@ Vincula el fichero de configuración del repositorio con tu `~/`.
 ```bash
 # Eliminar ~/.vimrc si ya existe
 rm -r ~/.vimrc
+
 # Crear enlace simbólico de vimrc.vim a ~/.vimrc
 ln -s $(pwd)/vimrc.vim ~/.vimrc
 ```
+
+## Actualización
+
+```bash
+# Actualizar repositorio
+git pull
+```
+
+Los cambios se aplican automáticamente gracias al enlace simbólico.
