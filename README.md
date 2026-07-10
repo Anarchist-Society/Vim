@@ -15,10 +15,10 @@ Esta primera versión está basada en la guía de configuración de vimrc de  **
 ## Estructura de directorios que vamos a crear
 ```tree
 .vim/
- ├── autoload/
- ├── backup/
- ├── colors/
- └── plugged/
+ ├── autoload/    # vim-plug y plugins que se cargan bajo demanda
+ ├── backup/      # copias de seguridad de ficheros
+ ├── colors/      # esquemas de colores
+ └── plugged/     # plugins instalados por vim-plug
 ```
 
 Creamos la estructura:
