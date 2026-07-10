@@ -23,19 +23,22 @@ Esta primera versión está basada en la guía de configuración de vimrc de  **
 
 Creamos la estructura:
 
-```zsh
+```bash
+# -p crea directorios padres si no existen
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 ```
 
 Creamos el fichero vimrc
-```zsh
+```bash
+# Crear fichero vacío de configuración
 touch ~/.vimrc
 ```
 
 ## Plugins para vim
 Para añadir plugin: yo voy a usar el gestor de plugins vim-plug [Instalar vim-plug (curl)](https://github.com/junegunn/vim-plug#installation), lo instalamos con el siguiente comando.
 
-```zsh
+```bash
+# -f: fallar silenciosamente, -L: seguir redirecciones, -o: guardar en archivo, --create-dirs: crear directorios necesarios
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -44,23 +47,25 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 coc-nvim necesita Node.js y npm. Instálalos con pacman:
 
-```zsh
+```bash
+# Instalar Node.js y npm con pacman (Arch Linux)
 sudo pacman -S nodejs npm
 ```
 
 Verifica que las versiones sean correctas:
 
-```zsh
+```bash
 node --version   # Debe ser >= 16 y <= 24
-npm --version
+npm --version    # Verificar versión de npm
 ```
 
 > **Nota:** Si pacman instala Node.js 25+, usa `nvm` para instalar una versión LTS:
-> ```zsh
+> ```bash
+> # Descargar script de instalación de nvm
 > curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 > # Reinicia la terminal o ejecuta: source ~/.zshrc
-> nvm install --lts
-> nvm use --lts
+> nvm install --lts  # Instalar última versión LTS
+> nvm use --lts      # Usar versión LTS instalada
 > ```
 
 ## Extensiones de coc-nvim
@@ -73,7 +78,8 @@ Después de instalar los plugins con vim-plug, abre Vim y ejecuta:
 
 O desde la terminal:
 
-```zsh
+```bash
+# Instalar extensiones de coc-nvim globalmente (-g)
 npm install -g coc-json coc-html coc-css coc-tsserver coc-prettier coc-emmet
 ```
 
