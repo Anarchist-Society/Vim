@@ -13,7 +13,7 @@ Esta primera versión está basada en la guía de configuración de vimrc de  **
 - Git
 
 ## Estructura de directorios que vamos a crear
-```
+```tree
 .vim/
  ├── autoload/
  ├── backup/
