@@ -48,6 +48,14 @@ coc-nvim necesita Node.js y npm. Instálalos con pacman:
 ```bash
 # Instalar Node.js y npm con pacman (Arch Linux)
 sudo pacman --sync nodejs npm
+
+# Configurar directorio global para paquetes npm (evitar sudo)
+mkdir ~/.npm-global
+npm config set prefix ~/.npm-global
+
+# Agregar al PATH en ~/.bashrc
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 Verifica que las versiones sean correctas:
