@@ -105,7 +105,7 @@ call plug#end()
 " ===============================
 " Tema
 " ===============================
-colorscheme tokyonight
+colorscheme tokyonight 
 
 " ===============================
 " NERDTree
@@ -171,7 +171,9 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 " ===============================
 " ===============================
 
-let g:user_emmet_leader_key=','
+" let g:user_emmet_leader_key = ','
+
+" let g:indentLine_enabled = 0
 
 " ==========================================================================
 " 4. MAPPINGS
@@ -225,6 +227,9 @@ autocmd FileType python setlocal nosmartindent
 let g:python_indent = {}
 let g:python_indent.disable_parentheses_indenting = 1
 let g:python_indent.closed_paren_align_last_line = 0
+
+" let g:indentLine_enabled = 0 " Desactivado por defecto
+let g:indentLine_fileType = ['html'] " Solo activo en HTML
 
 " ============================================================================
 " 6. STATUS LINE
